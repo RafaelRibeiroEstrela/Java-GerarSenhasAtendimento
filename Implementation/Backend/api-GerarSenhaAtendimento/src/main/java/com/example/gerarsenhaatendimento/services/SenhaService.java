@@ -13,32 +13,28 @@ import com.example.gerarsenhaatendimento.repositories.SenhaRepository;
 public class SenhaService {
 
 	@Autowired
-	private SenhaRepository repository;
+	private SenhaRepository senhaRepository;
 	
-	
-	public Senha gerarSenhaNormal() {
+	public Senha gerarSenha(String prioridade) {
+		Senha senha = new Senha();
 		
-		Long id = repository.gerarNumSenhaNormal();
-		Senha senha = new Senha();
-		senha.setId(id);
-		senha.setCod(String.valueOf(senha.getId()) + "-" + SenhaPrioridadeEnum.NORMAL.getDesc());
+		if (prioridade.equals("NORMAL")) {
+			senha.setId(senhaRepository.gerarNumSenhaPrioridadeNormal());
+		} else {
+			senha.setId(senhaRepository.gerarNumSenhaPrioridadeAlta());
+		}
+		senha.setPrioridade(SenhaPrioridadeEnum.toEnum(prioridade));
 		senha.setHorario(LocalDateTime.now());
-		senha.setPrioridade(SenhaPrioridadeEnum.NORMAL);
-		return repository.save(senha);
+		return senhaRepository.save(senha);
 	}
 	
-	public Senha gerarSenhaPrioridade() {
-		Long id = repository.gerarNumSenhaPrioridade();
-		Senha senha = new Senha();
-		senha.setId(id);
-		senha.setCod(String.valueOf(senha.getId()) + "-" + SenhaPrioridadeEnum.PRIORIDADE.getDesc());
-		senha.setHorario(LocalDateTime.now());
-		senha.setPrioridade(SenhaPrioridadeEnum.PRIORIDADE);
-		return repository.save(senha);
+	public void resetarTodasAsSenhas() {
+		senhaRepository.deleteAll();
+		senhaRepository.resetarGeradorDeSenhasPrioridadeAlta();
+		senhaRepository.resetarGeradorDeSenhasPrioridadeNormal();
 	}
 	
-	public void resetar() {
-		repository.resetar();
-	}
+	
+	
 
 }
