@@ -1,5 +1,7 @@
 package com.example.gerarsenhaatendimento.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
@@ -8,16 +10,24 @@ import com.example.gerarsenhaatendimento.models.Senha;
 
 public interface SenhaRepository extends JpaRepository<Senha, Long>{
 	
-	@Query(value = "SELECT seq_gerar_num_prioridade_normal.NEXTVAL FROM dual", nativeQuery = true)
-	Long gerarNumSenhaPrioridadeNormal();
-
-	@Query(value = "SELECT seq_gerar_num_prioridade_alta.NEXTVAL FROM dual", nativeQuery = true)
-	Long gerarNumSenhaPrioridadeAlta();
+	final String SEQ_PRIORIDADE_ALTA = "seq_gerar_num_prioridade_alta";
+	final String SEQ_PRIORIDADE_NORMAL = "seq_gerar_num_prioridade_normal";
 	
-	@Procedure(value = "reset_seq('seq_gerar_num_prioridade_alta')")
-	void resetarGeradorDeSenhasPrioridadeAlta();
+	@Query(value = "SELECT " + SEQ_PRIORIDADE_ALTA + ".NEXTVAL FROM dual", nativeQuery = true)
+	Long gerarNumPrioridadeAlta();
 	
-	@Procedure(value = "reset_seq('seq_gerar_num_prioridade_normal')")
-	void resetarGeradorDeSenhasPrioridadeNormal();
+	@Query(value = "SELECT " + SEQ_PRIORIDADE_NORMAL + ".NEXTVAL FROM dual", nativeQuery = true)
+	Long gerarNumPrioridadeNormal();
+	
+	@Procedure(procedureName = "RESETAR_SENHA_PRIORIDADE_ALTA")
+	void resetarSenhaPrioridadeAlta();
+	
+	@Procedure(procedureName = "RESETAR_SENHA_PRIORIDADE_NORMAL")
+	void resetarSenhaPrioridadeNormal();
+	
+	@Procedure(procedureName = "RESETAR_SENHA")
+	void resetarSenha();
+	
+	List<Senha> findByCod(Long cod);
 
 }
