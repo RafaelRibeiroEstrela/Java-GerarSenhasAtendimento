@@ -28,7 +28,7 @@ public class SenhaService {
 	public Senha gerarSenhaPrioridadeAlta() {
 		Senha senha = new Senha();
 		senha.setId(null);
-		senha.setCod(senhaRepository.gerarNumPrioridadeAlta());
+		senha.setCod(senhaRepository.gerarSenhaPrioridadeAlta());
 		senha.setPrioridade(PrioridadeEnum.ALTA);
 		senha.setStatus(SenhaStatusEnum.AGUARDANDO_ATENDIMENTO);
 		senha.setHorario(LocalDateTime.now());
@@ -38,7 +38,7 @@ public class SenhaService {
 	public Senha gerarSenhaPrioridadeNormal() {
 		Senha senha = new Senha();
 		senha.setId(null);
-		senha.setCod(senhaRepository.gerarNumPrioridadeNormal());
+		senha.setCod(senhaRepository.gerarSenhaPrioridadeNormal());
 		senha.setPrioridade(PrioridadeEnum.NORMAL);
 		senha.setStatus(SenhaStatusEnum.AGUARDANDO_ATENDIMENTO);
 		senha.setHorario(LocalDateTime.now());

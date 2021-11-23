@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.example.gerarsenhaatendimento.models.enums.PrioridadeEnum;
@@ -22,7 +23,8 @@ public class Senha implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_SENHA_ID")
+	@SequenceGenerator(name = "SEQ_SENHA_ID", sequenceName = "SEQ_SENHA", allocationSize = 1)
 	@Column(name = "ID_SENHA")
 	private Long id;
 	

@@ -1,16 +1,16 @@
 
-CREATE SEQUENCE seq_gerar_num_prioridade_alta;
-CREATE SEQUENCE seq_gerar_num_prioridade_normal;
+CREATE SEQUENCE seq_gerar_senha_prioridade_alta;
+CREATE SEQUENCE seq_gerar_senha_prioridade_normal;
 CREATE SEQUENCE seq_atendimento;
 CREATE SEQUENCE seq_senha;
 
 
 
 CREATE TABLE tb_senha(
-    id_senha NUMBER DEFAULT seq_senha.NEXTVAL,
+    id_senha NUMBER,
     cod_senha NUMBER,
     prioridade_senha VARCHAR(50),
-    status_senha VARCHAR(50)
+    status_senha VARCHAR(50),
     horario_senha TIMESTAMP,
     CONSTRAINT id_senha_pk PRIMARY KEY(id_senha)
 );
@@ -25,7 +25,7 @@ CREATE TABLE tb_box_atendimento(
 
 CREATE TABLE tb_atendimento(
 
-    id_atendimento NUMBER DEFAULT seq_atendimento.NEXTVAL,
+    id_atendimento NUMBER,
     horario_atendimento TIMESTAMP,
     id_senha NUMBER,
     id_box NUMBER,
