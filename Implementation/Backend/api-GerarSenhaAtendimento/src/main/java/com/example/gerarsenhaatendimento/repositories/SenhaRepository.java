@@ -19,14 +19,8 @@ public interface SenhaRepository extends JpaRepository<Senha, Long>{
 	@Query(value = "SELECT " + SEQ_PRIORIDADE_NORMAL + ".NEXTVAL FROM dual", nativeQuery = true)
 	Long gerarNumPrioridadeNormal();
 	
-	@Procedure(procedureName = "RESETAR_SENHA_PRIORIDADE_ALTA")
-	void resetarSenhaPrioridadeAlta();
-	
-	@Procedure(procedureName = "RESETAR_SENHA_PRIORIDADE_NORMAL")
-	void resetarSenhaPrioridadeNormal();
-	
-	@Procedure(procedureName = "RESETAR_SENHA")
-	void resetarSenha();
+	@Procedure(procedureName = "RESETAR_TUDO")
+	void resetarTudo();
 	
 	List<Senha> findByCod(Long cod);
 

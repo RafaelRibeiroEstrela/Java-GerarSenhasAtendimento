@@ -1,6 +1,6 @@
 package com.example.gerarsenhaatendimento.models.enums;
 
-public enum SenhaPrioridadeEnum {
+public enum PrioridadeEnum {
 	
 	ALTA(1, "ALTA"),
 	NORMAL(2, "NORMAL");
@@ -8,7 +8,7 @@ public enum SenhaPrioridadeEnum {
 	private int cod;
 	private String desc;
 	
-	private SenhaPrioridadeEnum(int cod, String desc) {
+	private PrioridadeEnum(int cod, String desc) {
 		this.cod = cod;
 		this.desc = desc;
 	}
@@ -21,13 +21,13 @@ public enum SenhaPrioridadeEnum {
 		return desc;
 	}
 	
-	public static SenhaPrioridadeEnum toEnum(String desc) {
+	public static PrioridadeEnum toEnum(String desc) {
 		
 		if (desc == null) {
 			return null;
 		}
 		
-		for (SenhaPrioridadeEnum index : SenhaPrioridadeEnum.values()) {
+		for (PrioridadeEnum index : PrioridadeEnum.values()) {
 			
 			if (desc.equals(index.getDesc())) {
 				return index;
@@ -37,13 +37,13 @@ public enum SenhaPrioridadeEnum {
 		throw new IllegalArgumentException("Enum inválido: " + desc);
 	}
 	
-public static SenhaPrioridadeEnum toEnum(Integer cod) {
+public static PrioridadeEnum toEnum(Integer cod) {
 		
 		if (cod == null) {
 			return null;
 		}
 		
-		for (SenhaPrioridadeEnum index : SenhaPrioridadeEnum.values()) {
+		for (PrioridadeEnum index : PrioridadeEnum.values()) {
 			
 			if (cod == index.getCod()) {
 				return index;

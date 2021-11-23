@@ -1,18 +1,20 @@
-create or replace
-procedure reset_seq( p_seq_name in varchar2 )
-is
-    l_val number;
-begin
-    execute immediate
-    'select ' || p_seq_name || '.nextval from dual' INTO l_val;
+CREATE OR REPLACE PROCEDURE resetar_senha IS
+    
+    l_val NUMBER;
+    p_seq_name VARCHAR2(100) := 'seq_senha';
 
-    execute immediate
-    'alter sequence ' || p_seq_name || ' increment by -' || l_val || 
-                                                          ' minvalue 0';
+BEGIN
 
-    execute immediate
-    'select ' || p_seq_name || '.nextval from dual' INTO l_val;
-
-    execute immediate
-    'alter sequence ' || p_seq_name || ' increment by 1 minvalue 0';
-end;
+    EXECUTE IMMEDIATE
+    'SELECT ' || p_seq_name || '.NEXTVAL FROM dual' INTO l_val;
+    
+    EXECUTE IMMEDIATE
+    'ALTER SEQUENCE ' || p_seq_name || ' INCREMENT BY -' || l_val || ' MINVALUE 0';
+    
+    EXECUTE IMMEDIATE
+    'SELECT ' || p_seq_name || '.NEXTVAL FROM dual' INTO l_val;
+    
+    EXECUTE IMMEDIATE
+    'ALTER SEQUENCE ' || p_seq_name || ' INCREMENT BY 1 MINVALUE 0';
+    
+END;

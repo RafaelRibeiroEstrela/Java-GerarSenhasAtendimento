@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.example.gerarsenhaatendimento.models.enums.SenhaPrioridadeEnum;
+import com.example.gerarsenhaatendimento.models.enums.PrioridadeEnum;
 import com.example.gerarsenhaatendimento.models.enums.SenhaStatusEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -43,7 +43,7 @@ public class Senha implements Serializable{
 		
 	}
 
-	public Senha(Long id, Long cod, SenhaPrioridadeEnum prioridade, SenhaStatusEnum status, LocalDateTime horario) {
+	public Senha(Long id, Long cod, PrioridadeEnum prioridade, SenhaStatusEnum status, LocalDateTime horario) {
 		super();
 		this.id = id;
 		this.cod = cod;
@@ -68,11 +68,11 @@ public class Senha implements Serializable{
 		this.cod = cod;
 	}
 
-	public SenhaPrioridadeEnum getPrioridade() {
-		return SenhaPrioridadeEnum.toEnum(prioridade);
+	public PrioridadeEnum getPrioridade() {
+		return PrioridadeEnum.toEnum(prioridade);
 	}
 
-	public void setPrioridade(SenhaPrioridadeEnum prioridade) {
+	public void setPrioridade(PrioridadeEnum prioridade) {
 		this.prioridade = prioridade.getDesc();
 	}
 	

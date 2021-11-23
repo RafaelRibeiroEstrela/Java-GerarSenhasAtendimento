@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.gerarsenhaatendimento.models.Senha;
-import com.example.gerarsenhaatendimento.models.enums.SenhaPrioridadeEnum;
+import com.example.gerarsenhaatendimento.models.enums.PrioridadeEnum;
 import com.example.gerarsenhaatendimento.models.enums.SenhaStatusEnum;
 import com.example.gerarsenhaatendimento.repositories.SenhaRepository;
 
@@ -29,7 +29,7 @@ public class SenhaService {
 		Senha senha = new Senha();
 		senha.setId(null);
 		senha.setCod(senhaRepository.gerarNumPrioridadeAlta());
-		senha.setPrioridade(SenhaPrioridadeEnum.ALTA);
+		senha.setPrioridade(PrioridadeEnum.ALTA);
 		senha.setStatus(SenhaStatusEnum.AGUARDANDO_ATENDIMENTO);
 		senha.setHorario(LocalDateTime.now());
 		return senhaRepository.save(senha);
@@ -39,7 +39,7 @@ public class SenhaService {
 		Senha senha = new Senha();
 		senha.setId(null);
 		senha.setCod(senhaRepository.gerarNumPrioridadeNormal());
-		senha.setPrioridade(SenhaPrioridadeEnum.NORMAL);
+		senha.setPrioridade(PrioridadeEnum.NORMAL);
 		senha.setStatus(SenhaStatusEnum.AGUARDANDO_ATENDIMENTO);
 		senha.setHorario(LocalDateTime.now());
 		return senhaRepository.save(senha);
@@ -47,9 +47,7 @@ public class SenhaService {
 	
 	public void resetarTodasAsSenhas() {
 		senhaRepository.deleteAll();
-		senhaRepository.resetarSenhaPrioridadeAlta();
-		senhaRepository.resetarSenhaPrioridadeNormal();
-		senhaRepository.resetarSenha();
+		senhaRepository.resetarTudo();
 	}
 	
 	
