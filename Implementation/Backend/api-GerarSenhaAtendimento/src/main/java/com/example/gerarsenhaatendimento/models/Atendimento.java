@@ -9,42 +9,42 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.example.gerarsenhaatendimento.models.enums.PrioridadeEnum;
-import com.example.gerarsenhaatendimento.models.enums.SenhaStatusEnum;
-
 @Entity
-@Table(name = "TB_SENHA")
-public class Senha implements Serializable{
+@Table(name = "TB_ATENDIMENTO")
+public class Atendimento implements Serializable{
 	
-
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_SENHA")
+	@Column(name = "ID_ATENDIMENTO")
 	private Long id;
 	
-	@Column(name = "PRIORIDADE_SENHA")
-	private Integer prioridade;
-	
-	@Column(name = "HORARIO_SENHA")
+	@Column(name = "HORARIO_ATENDIMENTO")
 	private LocalDateTime horario;
 	
-	@Column(name = "STATUS_SENHA")
-	private Integer status;
+	@OneToOne
+	@JoinColumn(name = "ID_SENHA")
+	private Senha senha;
 	
-	public Senha() {
+	@OneToOne
+	@JoinColumn(name = "ID_GUICHE")
+	private Guiche guiche;
+	
+	public Atendimento() {
 		
 	}
 
-	public Senha(Long id, PrioridadeEnum prioridade, LocalDateTime horario, SenhaStatusEnum status) {
+	public Atendimento(Long id, LocalDateTime horario, Senha senha, Guiche guiche) {
 		super();
 		this.id = id;
-		this.prioridade = prioridade.getCod();
 		this.horario = horario;
-		this.status = status.getCod();
+		this.senha = senha;
+		this.guiche = guiche;
 	}
 
 	public Long getId() {
@@ -55,28 +55,12 @@ public class Senha implements Serializable{
 		this.id = id;
 	}
 
-	public PrioridadeEnum getPrioridade() {
-		return PrioridadeEnum.toEnum(prioridade);
-	}
-
-	public void setPrioridade(PrioridadeEnum prioridade) {
-		this.prioridade = prioridade.getCod();
-	}
-
 	public LocalDateTime getHorario() {
 		return horario;
 	}
 
 	public void setHorario(LocalDateTime horario) {
 		this.horario = horario;
-	}
-
-	public SenhaStatusEnum getStatus() {
-		return SenhaStatusEnum.toEnum(status);
-	}
-
-	public void setStatus(SenhaStatusEnum status) {
-		this.status = status.getCod();
 	}
 
 	@Override
@@ -92,8 +76,13 @@ public class Senha implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Senha other = (Senha) obj;
+		Atendimento other = (Atendimento) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	@Override
+	public String toString() {
+		return "Atendimento [id=" + id + ", horario=" + horario + "]";
 	}
 	
 	
