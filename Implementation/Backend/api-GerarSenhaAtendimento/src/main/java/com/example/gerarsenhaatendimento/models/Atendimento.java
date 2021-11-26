@@ -63,6 +63,22 @@ public class Atendimento implements Serializable{
 		this.horario = horario;
 	}
 
+	public Senha getSenha() {
+		return senha;
+	}
+
+	public void setSenha(Senha senha) {
+		this.senha = senha;
+	}
+
+	public Guiche getGuiche() {
+		return guiche;
+	}
+
+	public void setGuiche(Guiche guiche) {
+		this.guiche = guiche;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

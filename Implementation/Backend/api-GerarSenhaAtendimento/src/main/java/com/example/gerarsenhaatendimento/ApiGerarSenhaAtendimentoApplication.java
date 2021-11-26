@@ -37,6 +37,9 @@ public class ApiGerarSenhaAtendimentoApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
+		guicheRepository.save(new Guiche(1L));
+		
+		/*
 		List<Senha> senhas = new ArrayList<>();
 		
 		List<Atendimento> atendimentos = new ArrayList<>();
@@ -79,14 +82,7 @@ public class ApiGerarSenhaAtendimentoApplication implements CommandLineRunner{
 				break;
 			}
 		}
-		
-		
-		
-		
-		
-		
-		
-		
+		*/
 	}
 
 }
