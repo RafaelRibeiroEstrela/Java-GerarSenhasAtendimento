@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="867CE0B8-4D23-8FE4-575C-2A70E6768EF6" name="SENHA">
+<createdBy>grandejogada</createdBy>
+<createdTime>2021-12-09 23:52:26 UTC</createdTime>
+<ownerDesignName>ModelagemOracle</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_senha" id="C38A7A97-1E1C-A98D-9D40-AB360D90BD79">
+<createdBy>grandejogada</createdBy>
+<createdTime>2021-12-09 23:54:15 UTC</createdTime>
+<ownerDesignName>ModelagemOracle</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="prioridade" id="6E469FD6-3379-253A-99D2-30C12F0E1F63">
+<createdBy>grandejogada</createdBy>
+<createdTime>2021-12-09 23:54:15 UTC</createdTime>
+<notes><![CDATA[PRIORIDADE
+1 - ALTA
+2 - NORMAL]]></notes>
+<ownerDesignName>ModelagemOracle</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="status" id="A8EE70E9-2A93-5DB4-94A5-7008D2B6BC15">
+<createdBy>grandejogada</createdBy>
+<createdTime>2021-12-10 00:03:23 UTC</createdTime>
+<notes><![CDATA[STATUS:
+1 - AGUARDANDO_ATENDIMENTO
+2 - EM_ATENDIMENTO
+3 - ATENDIMENTO_FINALIZADO]]></notes>
+<ownerDesignName>ModelagemOracle</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1FDBB5E3-6AE0-436D-1424-E13A69EC6F08" name="id_senha_pk">
+<createdBy>grandejogada</createdBy>
+<createdTime>2021-12-09 23:54:41 UTC</createdTime>
+<ownerDesignName>ModelagemOracle</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C38A7A97-1E1C-A98D-9D40-AB360D90BD79"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

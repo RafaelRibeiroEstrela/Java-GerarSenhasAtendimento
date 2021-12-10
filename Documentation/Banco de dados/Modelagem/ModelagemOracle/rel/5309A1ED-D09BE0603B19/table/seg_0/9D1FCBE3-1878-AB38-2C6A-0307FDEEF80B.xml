@@ -1,0 +1,79 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9D1FCBE3-1878-AB38-2C6A-0307FDEEF80B" name="ATENDIMENTO">
+<createdBy>grandejogada</createdBy>
+<createdTime>2021-12-09 23:57:53 UTC</createdTime>
+<ownerDesignName>ModelagemOracle</ownerDesignName>
+<ordsAlias>table_5</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_atendimento" id="A7F7FEFD-31C9-D393-0880-C16F1E48C393">
+<createdBy>grandejogada</createdBy>
+<createdTime>2021-12-09 23:59:57 UTC</createdTime>
+<ownerDesignName>ModelagemOracle</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E5DB75BB-A075-DE80-EC62-3E84BE2D7B0B" referredColumn="489EB1DB-1A69-C482-8D7F-AF58DB13A240"/>
+<colAssociation fkAssociation="E6AE921E-2440-B373-C5FD-77F0E7CA3741" referredColumn="C38A7A97-1E1C-A98D-9D40-AB360D90BD79"/>
+</associations>
+</Column>
+<Column name="id_senha" id="A32315D3-7EC3-3D61-AFF0-42B215B5246A">
+<createdBy>grandejogada</createdBy>
+<createdTime>2021-12-09 23:59:57 UTC</createdTime>
+<ownerDesignName>ModelagemOracle</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_guiche" id="2C11C95B-3A7C-9AED-1955-A69C98F17915">
+<createdBy>grandejogada</createdBy>
+<createdTime>2021-12-09 23:59:57 UTC</createdTime>
+<ownerDesignName>ModelagemOracle</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="66A3E652-496C-626A-FE6F-7D2CAA2992A4" name="id_atendimento_pk">
+<createdBy>grandejogada</createdBy>
+<createdTime>2021-12-09 23:59:57 UTC</createdTime>
+<ownerDesignName>ModelagemOracle</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A7F7FEFD-31C9-D393-0880-C16F1E48C393"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F2A10925-53E9-4BAA-D4EB-4D6B16EA81F9" name="atendimento_senha_fk">
+<createdBy>grandejogada</createdBy>
+<createdTime>2021-12-09 23:59:57 UTC</createdTime>
+<ownerDesignName>ModelagemOracle</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A7F7FEFD-31C9-D393-0880-C16F1E48C393"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D082A808-50E4-B621-C986-7A486A86ACC1" name="atendimento_guiche_fk">
+<createdBy>grandejogada</createdBy>
+<createdTime>2021-12-09 23:59:57 UTC</createdTime>
+<ownerDesignName>ModelagemOracle</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A7F7FEFD-31C9-D393-0880-C16F1E48C393"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

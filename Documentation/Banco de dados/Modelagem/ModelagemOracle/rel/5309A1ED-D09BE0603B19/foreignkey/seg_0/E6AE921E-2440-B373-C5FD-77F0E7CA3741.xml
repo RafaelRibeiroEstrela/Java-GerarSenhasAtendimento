@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="E6AE921E-2440-B373-C5FD-77F0E7CA3741" containerWithKeyObject="9D1FCBE3-1878-AB38-2C6A-0307FDEEF80B" localFKIndex="F2A10925-53E9-4BAA-D4EB-4D6B16EA81F9" name="atendimento_senha_fk">
+<createdBy>grandejogada</createdBy>
+<createdTime>2021-12-09 23:59:57 UTC</createdTime>
+<ownerDesignName>ModelagemOracle</ownerDesignName>
+<referredTableLongName>SENHA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>867CE0B8-4D23-8FE4-575C-2A70E6768EF6</referredTableID>
+<keyObject>1FDBB5E3-6AE0-436D-1424-E13A69EC6F08</keyObject>
+<referredKeyID>1FDBB5E3-6AE0-436D-1424-E13A69EC6F08</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_senha</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
