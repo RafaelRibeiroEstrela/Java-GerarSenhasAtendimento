@@ -375,6 +375,10 @@ CREATE TABLE tb_atendimento(
     CONSTRAINT atendimento_guiche_fk FOREIGN KEY(id_guiche) REFERENCES tb_guiche(id_guiche)
 );
 
+
+ALTER TABLE tb_atendimento
+ADD CONSTRAINT id_senha_un UNIQUE(id_senha);
+
 CREATE OR REPLACE PROCEDURE proc_inserir_guiche(
     pPrioridade     tb_guiche.prioridade%TYPE    
 )
@@ -405,3 +409,22 @@ EXCEPTION
     WHEN OTHERS THEN
         RAISE_APPLICATION_ERROR(-20002, 'ERRO ORACLE: ' || SQLCODE || SQLERRM);
 END;
+
+CREATE OR REPLACE PROCEDURE proc_inserir_senha(pPrioridade tb_guiche.prioridade%TYPE)
+IS
+BEGIN
+    
+    IF (pPrioridade > 2 OR pPrioridade < 1) THEN
+        RAISE_APPLICATION_ERROR(-20001, 'ERRO: A PRIORIDADE DEVE SER 1 - ALTA OU 2 - NORMAL');
+    END IF;
+    
+    INSERT INTO tb_senha
+    VALUES (seq_senha.NEXTVAL, pPrioridade, 1);
+
+EXCEPTION
+    
+    WHEN OTHERS THEN
+        RAISE_APPLICATION_ERROR(-20002, 'ERRO ORACLE: ' || SQLCODE || SQLERRM);
+    
+END;
+
