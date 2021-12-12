@@ -359,6 +359,9 @@ CREATE TABLE tb_senha(
     CONSTRAINT id_senha_pk PRIMARY KEY(id_senha)
 );
 
+ALTER TABLE tb_senha
+ADD horario DATE DEFAULT SYSTIMESTAMP;
+
 CREATE TABLE tb_guiche(
     id_guiche NUMBER,
     CONSTRAINT id_guiche_pk PRIMARY KEY(id_guiche)
@@ -378,6 +381,11 @@ CREATE TABLE tb_atendimento(
 
 ALTER TABLE tb_atendimento
 ADD CONSTRAINT id_senha_un UNIQUE(id_senha);
+
+
+ALTER TABLE tb_atendimento
+ADD horario DATE DEFAULT SYSTIMESTAMP;
+
 
 CREATE OR REPLACE PROCEDURE proc_inserir_guiche(
     pPrioridade     tb_guiche.prioridade%TYPE    
