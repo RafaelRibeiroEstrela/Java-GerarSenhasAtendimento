@@ -30,17 +30,12 @@ public class SenhaService {
 		return senha;
 	}
 	
-	public List<Senha> findByStatusAndPrioridade(Integer prioridade){
-		return senhaRepository.findByStatusAndPrioridade(prioridade);
+	public Long chamarSenha(Integer prioridade){
+		return senhaRepository.chamarSenha(prioridade);
 	}
 	
 	public Senha save(PrioridadeEnum prioridade) {
 		Senha senha = new Senha(null, prioridade, SenhaStatusEnum.AGUARDANDO_ATENDIMENTO, LocalDateTime.now());
-		return senhaRepository.save(senha);
-	}
-	
-	public Senha alterarSenhaStatus(Senha senha) {
-		senha.setStatus(SenhaStatusEnum.ATENDIMENTO);
 		return senhaRepository.save(senha);
 	}
 	

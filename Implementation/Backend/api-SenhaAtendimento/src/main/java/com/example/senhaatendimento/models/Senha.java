@@ -21,8 +21,8 @@ public class Senha implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_SENHA")
-	@SequenceGenerator(name = "SEQ_SENHA", sequenceName = "SEQ_SENHA_ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_SENHA_ID")
+	@SequenceGenerator(name = "SEQ_SENHA_ID", sequenceName = "SEQ_SENHA", allocationSize = 1)
 	@Column(name = "ID_SENHA")
 	private Long id;
 	private Integer prioridade;

@@ -20,8 +20,8 @@ public class Atendimento implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ATENDIMENTO")
-	@SequenceGenerator(name = "SEQ_ATENDIMENTO", sequenceName = "SEQ_ATENDIMENTO_ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ATENDIMENTO_ID")
+	@SequenceGenerator(name = "SEQ_ATENDIMENTO_ID", sequenceName = "SEQ_ATENDIMENTO", allocationSize = 1)
 	@Column(name = "ID_ATENDIMENTO")
 	private Long id;
 	private LocalDateTime horario;
