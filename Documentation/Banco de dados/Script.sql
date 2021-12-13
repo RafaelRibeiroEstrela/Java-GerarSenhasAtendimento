@@ -387,52 +387,91 @@ ALTER TABLE tb_atendimento
 ADD horario DATE DEFAULT SYSTIMESTAMP;
 
 
-CREATE OR REPLACE PROCEDURE proc_inserir_guiche(
-    pPrioridade     tb_guiche.prioridade%TYPE    
-)
+create or replace FUNCTION func_chama_senha(pPrioridade IN NUMBER)
+    RETURN NUMBER
+IS
+    vId         NUMBER;
+BEGIN
+    SELECT *
+    INTO vId
+    FROM (  SELECT id_senha
+            FROM tb_senha
+            WHERE prioridade = 2
+            AND status = 1
+            ORDER BY id_senha ASC)
+    WHERE ROWNUM = 1;
+
+    RETURN vId;
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE_APPLICATION_ERROR(-20001, 'ERRO ORACLE: ' || SQLCODE || SQLERRM);
+END;
+
+
+create or replace PROCEDURE proc_resetar_seq_atendimento
 IS
     vNum        NUMBER;
 BEGIN
 
-    IF (pPrioridade > 2 OR pPrioridade < 1) THEN
-        RAISE_APPLICATION_ERROR(-20001, 'ERRO: A PRIORIDADE DEVE SER 1 - ALTA OU 2 - NORMAL');
-    END IF;
-    
-    SELECT MAX(id_guiche)
-    INTO vNum
-    FROM tb_guiche;
-    
-    IF (vNum IS NULL) THEN
-        INSERT INTO tb_guiche
-        VALUES (1, pPrioridade);
-    
-    ELSE
-        INSERT INTO tb_guiche
-        VALUES ((SELECT MAX(id_guiche) FROM tb_guiche) + 1, pPrioridade);
-        
-    END IF;
-   
-    
+    vNum := seq_atendimento.NEXTVAL;
+
+    EXECUTE IMMEDIATE
+    'ALTER SEQUENCE seq_atendimento INCREMENT BY -' || vNum || ' MINVALUE 0';
+
+    vNum := seq_atendimento.NEXTVAL;
+
+    EXECUTE IMMEDIATE
+    'ALTER SEQUENCE seq_atendimento INCREMENT BY 1 MINVALUE 0';
+
 EXCEPTION
     WHEN OTHERS THEN
-        RAISE_APPLICATION_ERROR(-20002, 'ERRO ORACLE: ' || SQLCODE || SQLERRM);
+        RAISE_APPLICATION_ERROR(-20001, 'ERRO ORACLE ' || SQLCODE || SQLERRM);
+
 END;
 
-CREATE OR REPLACE PROCEDURE proc_inserir_senha(pPrioridade tb_guiche.prioridade%TYPE)
+create or replace PROCEDURE proc_resetar_seq_senha
+IS
+    vNum        NUMBER;
+BEGIN
+
+    vNum := seq_senha.NEXTVAL;
+
+    EXECUTE IMMEDIATE
+    'ALTER SEQUENCE seq_senha INCREMENT BY -' || vNum || ' MINVALUE 0';
+
+    vNum := seq_senha.NEXTVAL;
+
+    EXECUTE IMMEDIATE
+    'ALTER SEQUENCE seq_senha INCREMENT BY 1 MINVALUE 0';
+
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE_APPLICATION_ERROR(-20001, 'ERRO ORACLE ' || SQLCODE || SQLERRM);
+
+END;
+
+create or replace PROCEDURE proc_resetar_sequences
+IS
+    vNum        NUMBER;
+BEGIN
+
+    proc_resetar_seq_atendimento;
+    proc_resetar_seq_senha;
+
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE_APPLICATION_ERROR(-20001, 'ERRO ORACLE ' || SQLCODE || SQLERRM);
+
+END;
+
+create or replace PROCEDURE proc_resetar_senha_atendimento
 IS
 BEGIN
-    
-    IF (pPrioridade > 2 OR pPrioridade < 1) THEN
-        RAISE_APPLICATION_ERROR(-20001, 'ERRO: A PRIORIDADE DEVE SER 1 - ALTA OU 2 - NORMAL');
-    END IF;
-    
-    INSERT INTO tb_senha
-    VALUES (seq_senha.NEXTVAL, pPrioridade, 1);
+    DELETE
+    FROM tb_atendimento;
 
-EXCEPTION
-    
-    WHEN OTHERS THEN
-        RAISE_APPLICATION_ERROR(-20002, 'ERRO ORACLE: ' || SQLCODE || SQLERRM);
-    
+    DELETE 
+    FROM tb_senha;
+
+    proc_resetar_sequences;
 END;
-

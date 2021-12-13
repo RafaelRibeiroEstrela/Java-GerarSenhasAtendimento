@@ -30,8 +30,8 @@ public class SenhaService {
 		return senha;
 	}
 	
-	public List<Senha> findByStatusAndPrioridade(Integer status, Integer prioridade){
-		return senhaRepository.findByStatusAndPrioridade(status, prioridade);
+	public List<Senha> findByStatusAndPrioridade(Integer prioridade){
+		return senhaRepository.findByStatusAndPrioridade(prioridade);
 	}
 	
 	public Senha save(PrioridadeEnum prioridade) {
