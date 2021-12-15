@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.senhaatendimento.models.Atendimento;
-import com.example.senhaatendimento.models.Senha;
 import com.example.senhaatendimento.models.dto.AtendimentoDTO;
 import com.example.senhaatendimento.repositories.AtendimentoRepository;
 
@@ -33,9 +32,7 @@ public class AtendimentoService {
 	}
 
 	public Atendimento save(AtendimentoDTO atendimentoDTO) {
-		Senha senha = new Senha();
-		senha.setId(senhaService.chamarSenha(atendimentoDTO.getPrioridadeEnum().getCod()));
-		Atendimento atendimento = new Atendimento(null, LocalDateTime.now(), senha, atendimentoDTO.getGuiche());
+		Atendimento atendimento = new Atendimento(null, LocalDateTime.now(), senhaService.chamarSenha(atendimentoDTO.getPrioridade()), atendimentoDTO.getGuiche());
 		return atendimentoRepository.save(atendimento);
 	}
 	

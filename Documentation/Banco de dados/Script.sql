@@ -367,6 +367,10 @@ CREATE TABLE tb_guiche(
     CONSTRAINT id_guiche_pk PRIMARY KEY(id_guiche)
 );
 
+ALTER TABLE tb_guiche
+ADD prioridade NUMBER NOT NULL;
+
+
 CREATE SEQUENCE seq_atendimento;
 
 CREATE TABLE tb_atendimento(

@@ -20,11 +20,7 @@ public class GuicheService {
 	}
 	
 	public Guiche findById(Long id) {
-		Guiche guiche = guicheRepository.findById(id).get();
-		if (guiche == null) {
-			throw new RuntimeException("Objeto não encontrado com id = " + id);
-		}
-		return guiche;
+		return guicheRepository.findById(id).orElseThrow(() -> new RuntimeException("Objeto não encontrado com id = " + id));
 	}
 	
 	public Guiche save(Guiche guiche) {

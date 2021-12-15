@@ -11,7 +11,7 @@ public class AtendimentoDTO implements Serializable{
 	
 	private Guiche guiche;
 	
-	private PrioridadeEnum prioridadeEnum;
+	private PrioridadeEnum prioridade;
 
 	public Guiche getGuiche() {
 		return guiche;
@@ -21,12 +21,12 @@ public class AtendimentoDTO implements Serializable{
 		this.guiche = guiche;
 	}
 
-	public PrioridadeEnum getPrioridadeEnum() {
-		return prioridadeEnum;
+	public PrioridadeEnum getPrioridade() {
+		return prioridade;
 	}
 
-	public void setPrioridadeEnum(PrioridadeEnum prioridadeEnum) {
-		this.prioridadeEnum = prioridadeEnum;
+	public void setPrioridade(PrioridadeEnum prioridade) {
+		this.prioridade = prioridade;
 	}
 	
 	
