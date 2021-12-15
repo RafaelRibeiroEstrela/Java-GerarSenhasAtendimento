@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import com.example.senhaatendimento.models.enums.PrioridadeEnum;
 import com.example.senhaatendimento.models.enums.SenhaStatusEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "TB_SENHA")
@@ -27,6 +28,8 @@ public class Senha implements Serializable{
 	private Long id;
 	private Integer prioridade;
 	private Integer status;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy HH:MM:ss")
 	private LocalDateTime horario;
 	
 	public Senha() {

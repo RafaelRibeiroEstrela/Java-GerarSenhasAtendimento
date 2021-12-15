@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.senhaatendimento.models.Atendimento;
 import com.example.senhaatendimento.models.dto.AtendimentoDTO;
 import com.example.senhaatendimento.repositories.AtendimentoRepository;
+import com.example.senhaatendimento.services.expcetion.ExceptionService;
 
 @Service
 public class AtendimentoService {
@@ -24,10 +25,7 @@ public class AtendimentoService {
 	}
 
 	public Atendimento findById(Long id) {
-		Atendimento atendimento = atendimentoRepository.findById(id).get();
-		if (atendimento == null) {
-			throw new RuntimeException("Objeto não encontrado com id = " + id);
-		}
+		Atendimento atendimento = atendimentoRepository.findById(id).orElseThrow(() -> new ExceptionService("Objeto não encontrado com id = " + id));
 		return atendimento;
 	}
 

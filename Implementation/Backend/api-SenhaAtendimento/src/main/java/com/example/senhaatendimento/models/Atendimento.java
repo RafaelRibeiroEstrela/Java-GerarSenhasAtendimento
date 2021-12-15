@@ -13,6 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "TB_ATENDIMENTO")
 public class Atendimento implements Serializable{
@@ -24,6 +26,8 @@ public class Atendimento implements Serializable{
 	@SequenceGenerator(name = "SEQ_ATENDIMENTO_ID", sequenceName = "SEQ_ATENDIMENTO", allocationSize = 1)
 	@Column(name = "ID_ATENDIMENTO")
 	private Long id;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy HH:MM:ss")
 	private LocalDateTime horario;
 	
 	@OneToOne
