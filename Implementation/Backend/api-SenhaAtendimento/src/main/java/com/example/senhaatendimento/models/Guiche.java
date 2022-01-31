@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.example.senhaatendimento.models.enums.GuicheStatusEnum;
-
 @Entity
 @Table(name = "TB_GUICHE")
 public class Guiche implements Serializable{
@@ -19,17 +17,13 @@ public class Guiche implements Serializable{
 	@Column(name = "ID_GUICHE")
 	private Long id;
 	
-	@Column(name = "STATUS_GUICHE")
-	private Integer status;
-	
 	public Guiche() {
 		
 	}
 
-	public Guiche(Long id, GuicheStatusEnum status) {
+	public Guiche(Long id) {
 		super();
 		this.id = id;
-		this.status = status.getCod();
 	}
 
 	public Long getId() {
@@ -38,14 +32,6 @@ public class Guiche implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public GuicheStatusEnum getPrioridade() {
-		return GuicheStatusEnum.toEnum(status);
-	}
-
-	public void setPrioridade(GuicheStatusEnum status) {
-		this.status = status.getCod();
 	}
 
 	@Override

@@ -45,8 +45,8 @@ public class SenhaService {
 		return senhaRepository.save(senha);
 	}
 	
-	public void deleteAll() {
-		senhaRepository.deleteAll();
+	public void resetarSenhaAtendimento() {
+		senhaRepository.resetarSenhaAtendimento();
 	}
 	
 	

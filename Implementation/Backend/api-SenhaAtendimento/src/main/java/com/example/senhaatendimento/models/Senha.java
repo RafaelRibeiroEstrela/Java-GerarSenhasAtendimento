@@ -33,8 +33,8 @@ public class Senha implements Serializable{
 	@Column(name = "STATUS_SENHA")
 	private Integer status;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy HH:MM:ss")
-	@Column(name = "HORARIRO_SENHA")
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+	@Column(name = "HORARIO_SENHA")
 	private LocalDateTime horario;
 	
 	public Senha() {

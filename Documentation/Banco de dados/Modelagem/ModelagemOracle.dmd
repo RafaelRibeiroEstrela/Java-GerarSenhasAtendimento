@@ -1,8 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="ModelagemOracle" id="9E3F56BA-2A4B-7509-7D53-0825AE7BA0E7" version="3.5">
-<createdBy>grandejogada</createdBy>
-<createdTime>2021-12-09 23:47:56 UTC</createdTime>
-<ownerDesignName>ModelagemOracle</ownerDesignName>
-<capitalNames>false</capitalNames>
-<designId>9E3F56BA-2A4B-7509-7D53-0825AE7BA0E7</designId>
-</OSDM_Design>

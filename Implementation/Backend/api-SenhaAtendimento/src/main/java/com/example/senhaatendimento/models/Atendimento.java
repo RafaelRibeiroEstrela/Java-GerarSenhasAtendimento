@@ -27,7 +27,8 @@ public class Atendimento implements Serializable{
 	@Column(name = "ID_ATENDIMENTO")
 	private Long id;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy HH:MM:ss")
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+	@Column(name = "HORARIO_ATENDIMENTO")
 	private LocalDateTime horario;
 	
 	@OneToOne
