@@ -13,5 +13,8 @@ public interface SenhaRepository extends JpaRepository<Senha, Long> {
 	
 	@Query("SELECT se FROM Senha se WHERE se.status = 1 AND se.prioridade = :prioridade ORDER BY se.id ASC")
 	List<Senha> chamarSenha(Integer prioridade);
+	
+	@Query("SELECT se FROM Senha se WHERE se.status = 1 ORDER BY se.id ASC")
+	List<Senha> carregarSenhas();
 
 }

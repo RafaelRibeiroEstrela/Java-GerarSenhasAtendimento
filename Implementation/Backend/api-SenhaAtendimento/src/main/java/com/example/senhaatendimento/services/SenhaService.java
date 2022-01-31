@@ -30,7 +30,12 @@ public class SenhaService {
 		return senha;
 	}
 	
-	public Senha chamarSenha(PrioridadeEnum prioridade){
+	public Senha save(PrioridadeEnum prioridade) {
+		Senha senha = new Senha(null, prioridade, SenhaStatusEnum.AGUARDANDO_ATENDIMENTO, LocalDateTime.now());
+		return senhaRepository.save(senha);
+	}
+	
+	public Senha update(PrioridadeEnum prioridade){
 		List<Senha> listaSenha = senhaRepository.chamarSenha(prioridade.getCod());
 		if (listaSenha == null || listaSenha.isEmpty()) {
 			throw new ExceptionService("Não há senhas disponíveis para chamar");
@@ -40,9 +45,10 @@ public class SenhaService {
 		return senhaRepository.save(senha);
 	}
 	
-	public Senha save(PrioridadeEnum prioridade) {
-		Senha senha = new Senha(null, prioridade, SenhaStatusEnum.AGUARDANDO_ATENDIMENTO, LocalDateTime.now());
-		return senhaRepository.save(senha);
+	public void deleteAll() {
+		senhaRepository.deleteAll();
 	}
+	
+	
 
 }

@@ -30,12 +30,12 @@ public class AtendimentoService {
 	}
 
 	public Atendimento save(AtendimentoDTO atendimentoDTO) {
-		Atendimento atendimento = new Atendimento(null, LocalDateTime.now(), senhaService.chamarSenha(atendimentoDTO.getPrioridade()), atendimentoDTO.getGuiche());
+		Atendimento atendimento = new Atendimento(null, LocalDateTime.now(), senhaService.update(atendimentoDTO.getPrioridade()), atendimentoDTO.getGuiche());
 		return atendimentoRepository.save(atendimento);
 	}
 	
-	public void resetarSenhaAtendimento() {
-		atendimentoRepository.resetarSenhaAtendimento();
-	}
+	//public void resetarSenhaAtendimento() {
+	//	atendimentoRepository.resetarSenhaAtendimento();
+	//}
 
 }

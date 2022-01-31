@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.example.senhaatendimento.models.enums.PrioridadeEnum;
+import com.example.senhaatendimento.models.enums.GuicheStatusEnum;
 
 @Entity
 @Table(name = "TB_GUICHE")
@@ -18,16 +18,18 @@ public class Guiche implements Serializable{
 	@Id
 	@Column(name = "ID_GUICHE")
 	private Long id;
-	private Integer prioridade;
+	
+	@Column(name = "STATUS_GUICHE")
+	private Integer status;
 	
 	public Guiche() {
 		
 	}
 
-	public Guiche(Long id, Integer prioridade) {
+	public Guiche(Long id, GuicheStatusEnum status) {
 		super();
 		this.id = id;
-		this.prioridade = prioridade;
+		this.status = status.getCod();
 	}
 
 	public Long getId() {
@@ -38,12 +40,12 @@ public class Guiche implements Serializable{
 		this.id = id;
 	}
 
-	public PrioridadeEnum getPrioridade() {
-		return PrioridadeEnum.toEnum(prioridade);
+	public GuicheStatusEnum getPrioridade() {
+		return GuicheStatusEnum.toEnum(status);
 	}
 
-	public void setPrioridade(PrioridadeEnum prioridade) {
-		this.prioridade = prioridade.getCod();
+	public void setPrioridade(GuicheStatusEnum status) {
+		this.status = status.getCod();
 	}
 
 	@Override

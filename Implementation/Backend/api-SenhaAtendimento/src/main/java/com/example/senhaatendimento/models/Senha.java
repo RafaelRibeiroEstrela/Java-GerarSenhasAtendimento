@@ -22,14 +22,19 @@ public class Senha implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_SENHA_ID")
-	@SequenceGenerator(name = "SEQ_SENHA_ID", sequenceName = "SEQ_SENHA", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_SENHA")
+	@SequenceGenerator(name = "SEQ_SENHA", sequenceName = "SEQ_SENHA", allocationSize = 1)
 	@Column(name = "ID_SENHA")
 	private Long id;
+	
+	@Column(name = "PRIORIDADE")
 	private Integer prioridade;
+	
+	@Column(name = "STATUS_SENHA")
 	private Integer status;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy HH:MM:ss")
+	@Column(name = "HORARIRO_SENHA")
 	private LocalDateTime horario;
 	
 	public Senha() {
