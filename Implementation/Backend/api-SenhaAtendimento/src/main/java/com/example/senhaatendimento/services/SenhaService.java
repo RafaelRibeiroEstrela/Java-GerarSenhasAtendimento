@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.senhaatendimento.exceptions.ApiException;
 import com.example.senhaatendimento.models.Senha;
 import com.example.senhaatendimento.models.enums.PrioridadeEnum;
 import com.example.senhaatendimento.models.enums.SenhaStatusEnum;
 import com.example.senhaatendimento.repositories.SenhaRepository;
-import com.example.senhaatendimento.services.expcetion.ExceptionService;
 
 @Service
 public class SenhaService {
@@ -25,7 +25,7 @@ public class SenhaService {
 	public Senha findById(Long id) {
 		Senha senha = senhaRepository.findById(id).get();
 		if (senha == null) {
-			throw new ExceptionService("Objeto não encontrado com id = " + id);
+			throw new ApiException("Objeto não encontrado com id = " + id);
 		}
 		return senha;
 	}
@@ -38,7 +38,7 @@ public class SenhaService {
 	public Senha update(PrioridadeEnum prioridade){
 		List<Senha> listaSenha = senhaRepository.chamarSenha(prioridade.getCod());
 		if (listaSenha == null || listaSenha.isEmpty()) {
-			throw new ExceptionService("Não há senhas disponíveis para chamar");
+			throw new ApiException("Não há senhas disponíveis para chamar");
 		}
 		Senha senha = listaSenha.get(0);
 		senha.setStatus(SenhaStatusEnum.ATENDIMENTO);

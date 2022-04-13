@@ -6,9 +6,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.senhaatendimento.exceptions.ApiException;
 import com.example.senhaatendimento.models.Guiche;
 import com.example.senhaatendimento.repositories.GuicheRepository;
-import com.example.senhaatendimento.services.expcetion.ExceptionService;
 
 @Service
 public class GuicheService {
@@ -21,7 +21,7 @@ public class GuicheService {
 	}
 	
 	public Guiche findById(Long id) {
-		return guicheRepository.findById(id).orElseThrow(() -> new ExceptionService("Objeto não encontrado com id = " + id));
+		return guicheRepository.findById(id).orElseThrow(() -> new ApiException("Objeto não encontrado com id = " + id));
 	}
 	
 	public Guiche save(Guiche guiche) {

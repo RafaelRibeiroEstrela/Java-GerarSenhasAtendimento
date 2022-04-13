@@ -1,4 +1,4 @@
-package com.example.senhaatendimento.resources.exception;
+package com.example.senhaatendimento.exceptions;
 
 import java.time.LocalDateTime;
 
@@ -9,18 +9,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.example.senhaatendimento.services.expcetion.ExceptionService;
-
 @ControllerAdvice
 public class ExceptionResource {
 	
-	@ExceptionHandler(ExceptionService.class)
-	public ResponseEntity<ExceptionDefault> exceptionDefault(ExceptionService e, HttpServletRequest request){
-		ExceptionDefault err = new ExceptionDefault();
-		err.setTimestamp(LocalDateTime.now());
+	@ExceptionHandler(ApiException.class)
+	public ResponseEntity<StandardError> exceptionDefault(ApiException e, HttpServletRequest request){
+		StandardError err = new StandardError();
+		err.setTime(LocalDateTime.now());
 		err.setStatus(HttpStatus.BAD_REQUEST.value());
-		err.setError("FALHA NA REQUISIÇÃO");
-		err.setMessage(e.getMessage());
+		err.setError(e.getMessage());
 		err.setPath(request.getRequestURI());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 	}
