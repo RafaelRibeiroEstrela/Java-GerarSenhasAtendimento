@@ -1,6 +1,6 @@
 package com.example.senhaatendimento.models.enums;
 
-public enum SenhaStatusEnum {
+public enum StatusEnum {
 
 	AGUARDANDO_ATENDIMENTO(1, "Aguardando atendimento"), 
 	ATENDIMENTO(2, "Atendimento");
@@ -8,7 +8,7 @@ public enum SenhaStatusEnum {
 	private int cod;
 	private String desc;
 
-	private SenhaStatusEnum(int cod, String desc) {
+	private StatusEnum(int cod, String desc) {
 		this.cod = cod;
 		this.desc = desc;
 	}
@@ -21,13 +21,13 @@ public enum SenhaStatusEnum {
 		return desc;
 	}
 
-	public static SenhaStatusEnum toEnum(String desc) {
+	public static StatusEnum toEnum(String desc) {
 
 		if (desc == null) {
 			return null;
 		}
 
-		for (SenhaStatusEnum index : SenhaStatusEnum.values()) {
+		for (StatusEnum index : StatusEnum.values()) {
 
 			if (desc.equals(index.getDesc())) {
 				return index;
@@ -37,13 +37,13 @@ public enum SenhaStatusEnum {
 		throw new IllegalArgumentException("Enum inválido: " + desc);
 	}
 
-	public static SenhaStatusEnum toEnum(Integer cod) {
+	public static StatusEnum toEnum(Integer cod) {
 
 		if (cod == null) {
 			return null;
 		}
 
-		for (SenhaStatusEnum index : SenhaStatusEnum.values()) {
+		for (StatusEnum index : StatusEnum.values()) {
 
 			if (cod == index.getCod()) {
 				return index;

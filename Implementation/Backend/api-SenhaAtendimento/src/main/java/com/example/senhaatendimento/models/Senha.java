@@ -12,7 +12,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.example.senhaatendimento.models.enums.PrioridadeEnum;
-import com.example.senhaatendimento.models.enums.SenhaStatusEnum;
+import com.example.senhaatendimento.models.enums.StatusEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -41,7 +41,7 @@ public class Senha implements Serializable{
 		
 	}
 
-	public Senha(Long id, PrioridadeEnum prioridade, SenhaStatusEnum status, LocalDateTime horario) {
+	public Senha(Long id, PrioridadeEnum prioridade, StatusEnum status, LocalDateTime horario) {
 		super();
 		this.id = id;
 		this.prioridade = prioridade.getCod();
@@ -65,11 +65,11 @@ public class Senha implements Serializable{
 		this.prioridade = prioridade.getCod();
 	}
 
-	public SenhaStatusEnum getStatus() {
-		return SenhaStatusEnum.toEnum(status);
+	public StatusEnum getStatus() {
+		return StatusEnum.toEnum(status);
 	}
 
-	public void setStatus(SenhaStatusEnum status) {
+	public void setStatus(StatusEnum status) {
 		this.status = status.getCod();
 	}
 

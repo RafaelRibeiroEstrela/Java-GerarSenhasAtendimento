@@ -8,12 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.senhaatendimento.models.Atendimento;
-import com.example.senhaatendimento.models.dto.AtendimentoDTO;
+import com.example.senhaatendimento.models.enums.PrioridadeEnum;
 import com.example.senhaatendimento.services.AtendimentoService;
 
 @RestController
@@ -34,15 +34,10 @@ public class AtendimentoResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Atendimento> save(@RequestBody AtendimentoDTO atendimentoDTO){
-		return ResponseEntity.status(HttpStatus.OK).body(atendimentoService.save(atendimentoDTO));
+	public ResponseEntity<Atendimento> fazerAtendimento(@RequestParam Long idGuiche, @RequestParam PrioridadeEnum prioridade){
+		return ResponseEntity.status(HttpStatus.OK).body(atendimentoService.fazerAtendimento(idGuiche, prioridade));
 	}
 	
-	//@PutMapping
-	//public ResponseEntity<Void> resetarSenhaAtendimento(){
-	//	atendimentoService.resetarSenhaAtendimento();
-	//	return ResponseEntity.noContent().build();
-	//}
 	
 	
 }

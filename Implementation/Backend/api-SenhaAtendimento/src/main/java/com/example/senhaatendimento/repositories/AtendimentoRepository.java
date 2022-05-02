@@ -8,7 +8,4 @@ import com.example.senhaatendimento.models.Atendimento;
 @Repository
 public interface AtendimentoRepository extends JpaRepository<Atendimento, Long>{
 	
-	//@Procedure("RESETAR_SENHA_ATENDIMENTO")
-	//void resetarSenhaAtendimento();
-	
 }

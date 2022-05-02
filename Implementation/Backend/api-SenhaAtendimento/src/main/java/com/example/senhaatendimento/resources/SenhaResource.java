@@ -8,8 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.senhaatendimento.models.Senha;
@@ -33,15 +33,9 @@ public class SenhaResource {
 		return ResponseEntity.status(HttpStatus.OK).body(senhaService.findById(id));
 	}
 	
-	@PostMapping("/{prioridade}")
-	public ResponseEntity<Senha> save(@PathVariable PrioridadeEnum prioridade){
-		return ResponseEntity.status(HttpStatus.OK).body(senhaService.save(prioridade));
-	}
-	
-	@PutMapping
-	public ResponseEntity<Void> resetarSenhaAtendimento(){
-		senhaService.resetarSenhaAtendimento();
-		return ResponseEntity.noContent().build();
+	@PostMapping
+	public ResponseEntity<Senha> gerarSenha(@RequestParam PrioridadeEnum prioridade){
+		return ResponseEntity.status(HttpStatus.CREATED).body(senhaService.gerarSenha(prioridade));
 	}
 	
 	
